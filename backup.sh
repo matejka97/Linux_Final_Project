@@ -56,14 +56,16 @@ declare -a toBackup
 for file in $(ls) # [TASK 9]
 do
   # [TASK 10]
+  $file_last_modified_date= $(date -r $file +%s)
   if [[ $file_last_modified_date -gt $yesterdayTS]]
-#  then
+  then
     # [TASK 11]
-#  fi
+    toBackup+=($file)
+  fi
 done
 
 # [TASK 12]
-
+tar -czvf $backupFileName ${toBackup[@]}
 # [TASK 13]
 
 # Congratulations! You completed the final project for this course!
